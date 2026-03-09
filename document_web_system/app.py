@@ -198,7 +198,11 @@ def logout():
 # 启动
 # -------------------------
 
+import os
+
 if __name__ == "__main__":
     if not os.path.exists(DOC_FOLDER):
         os.mkdir(DOC_FOLDER)
-    app.run(debug=True)
+    # 云服务器分配端口
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port, debug=True)
